@@ -1,21 +1,31 @@
 <!-- 
-### 
+
 ---
 
-
-
-'''C++
+### 
 
 .
 
-Time Complexity: O()
-Space Complexity: O()
+**Input:**
+<br>
 
-'''
+<br>
 
----
+**Output:**
+<br>
+
+<br>
+
+**Explanation:** 
+
+Step 1: 
+Step 2:
+Step 3: 
+
+```
 
 
+```
  -->
 
 # 300 Questions-Code
@@ -25,12 +35,12 @@ Space Complexity: O()
 
 Given an array arr of N integers. Find the contiguous sub-array(containing at least one number) which has the maximum sum and return its sum.
 
-Input:
-<br>
-N = 5 <br>
+**Input:**<br>
+N = 5
 arr[] = {1,2,3,-2,5}
 <br>
-Output:
+
+**Output:**<br>
 9
 
 ```C++
@@ -56,13 +66,14 @@ int maxSubarraySum(int arr[], int n) {
 ---
 
 ### [Merge Overlapping Intervals](https://www.geeksforgeeks.org/merging-intervals/)
----
 
 Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
-Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
-Output: [[1,6],[8,10],[15,18]]
-Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+**Input:**<br> intervals = [[1,3],[2,6],[8,10],[15,18]]
+<br>
+
+**Output:**<br> [[1,6],[8,10],[15,18]]<br>
+**Explanation:** Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
 
 Case 1:
            a ----------- b
@@ -106,14 +117,16 @@ def mergeoverlappingintervals(arr, n):
 ---
 
 ### [Duplicates in an array](https://www.geeksforgeeks.org/duplicates-array-using-o1-extra-space-set-2/)
----
 
 Given an array a[] of size N which contains elements **from 0 to N-1**, you need to find all the elements occurring more than once in the given array.
 
-Input:
+**Input:**
+<br>
 N = 5
 a[] = {2,3,1,2,3}
-Output: 2 3 
+<br>
+
+**Output:**<br> 2 3 
 
 Step 1: First check all the values that are present in an array then go to that values as indexes and increment by the size of array.
 Step 2: Now check which value exists more than once by dividing with the size of array.
@@ -130,17 +143,21 @@ def printRepeating(arr, n):
         if (arr[i]/n) >= 2:
             print(i)
 
-Expected Time Complexity: O(n)
-Expected Auxiliary Space: O(n)
-
 ```
 
-### [Set Matrix Zeros](https://leetcode.com/problems/set-matrix-zeroes/)
 ---
+
+### [Set Matrix Zeros](https://leetcode.com/problems/set-matrix-zeroes/)
 
 Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's, and return the matrix.
 
-Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+**Input:**
+<br> 
+matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+<br> 
+
+**Input:**
+<br>
 Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 
 Step 1: Iterate through first column to check if it has 0 or not.
@@ -194,7 +211,6 @@ def setZeroes(arr):
 ---
 
 ### [Pascal Triangle](https://leetcode.com/problems/pascals-triangle/)
----
 
 
 
@@ -221,20 +237,31 @@ def pascalstriangle(n):
 ---
 
 ### [Next Permutation](https://practice.geeksforgeeks.org/problems/next-permutation/0)
----
 
+Implement the next permutation, which rearranges the list of numbers into Lexicographically next greater permutation of list of numbers. If such arrangement is not possible, it must be rearranged to the lowest possible order i.e. sorted in an ascending order. You are given an list of numbers arr[ ] of size N.
 
+**Input:**
+<br>
+N = 6
+arr = {1, 2, 3, 6, 5, 4}
+<br>
 
-```C++
+**Output:**
+<br>
+{1, 2, 4, 3, 5, 6}
+<br>
 
-.
+**Explanation:** The next permutation of the 
+given array is {1, 2, 4, 3, 5, 6}.
 
-Time Complexity: O()
-Space Complexity: O()
+Step 1: 
+Step 2:
+Step 3: 
 
 ```
 
----
+
+```
 
 
 
