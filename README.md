@@ -75,17 +75,17 @@ Given an array of intervals where intervals[i] = [starti, endi], merge all overl
 **Output:**<br> [[1,6],[8,10],[15,18]]<br>
 **Explanation:** Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
 
-Case 1:
-&nbsp; a ----------- b  
+Case 1:  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a ----------- b  
 start -------------------------- end
 
-Case 2:
-&nbsp; &nbsp; &nbsp; &nbsp; a ----------------------------- b  
+Case 2:  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; a ----------------------------- b  
 start -------------------------- end
 
-Case 3:
+Case 3:  
 a ----------------------------- b  
-&nbsp; &nbsp; &nbsp; start -------------------------- end
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; start -------------------------- end
 
 ```python
 
