@@ -292,7 +292,7 @@ vector<int> nextPermutation(int N, vector<int> arr){
 
 ```
 
-
+---
 
 ### [Inversion of Array](https://www.geeksforgeeks.org/counting-inversions/)
 
