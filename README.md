@@ -22,23 +22,21 @@ Space Complexity: O()
 ---
 
 ### [Kadane's Algorithm](https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0)
----
 
 Given an array arr of N integers. Find the contiguous sub-array(containing at least one number) which has the maximum sum and return its sum.
 
 Input:
-N = 5
+<br>
+N = 5 <br>
 arr[] = {1,2,3,-2,5}
+<br>
 Output:
 9
 
-Expected Time Complexity: O(N)
-Expected Auxiliary Space: O(1)
-
-'''C++
+```C++
 
 int maxSubarraySum(int arr[], int n) {
-        
+
         int current = 0;                      //This stores value of current elements
         int maximum = INT_MIN;                //The maximum value of a sub array is kept here
         for(int i=0; i<n; i++) {
@@ -53,7 +51,7 @@ int maxSubarraySum(int arr[], int n) {
         return maximum;
     }
 
-'''
+```
 
 ---
 
@@ -78,7 +76,7 @@ Case 3:
 a ----------------------------- b
               start -------------------------- end
 
-'''python
+```python
 
 def mergeoverlappingintervals(arr, n):
     answer = []
@@ -103,7 +101,7 @@ def mergeoverlappingintervals(arr, n):
     answer.append([start, end])
     return answer
 
-'''
+```
 
 ---
 
@@ -120,7 +118,7 @@ Output: 2 3
 Step 1: First check all the values that are present in an array then go to that values as indexes and increment by the size of array.
 Step 2: Now check which value exists more than once by dividing with the size of array.
 
-'''python
+```python
 
 def printRepeating(arr, n):
  
@@ -135,7 +133,7 @@ def printRepeating(arr, n):
 Expected Time Complexity: O(n)
 Expected Auxiliary Space: O(n)
 
-'''
+```
 
 ### [Set Matrix Zeros](https://leetcode.com/problems/set-matrix-zeroes/)
 ---
@@ -166,7 +164,7 @@ Step 3: Traverse backwards and if the first row and column contains 0, set the v
 **3** | 4 | 5 | **2**  
 **1** | 3 | 1 | **5**  
 
-'''python
+```python
 
 def setZeroes(arr):
     row = len(arr)
@@ -191,7 +189,7 @@ def setZeroes(arr):
 
     return arr
 
-'''
+```
 
 ---
 
@@ -200,7 +198,7 @@ def setZeroes(arr):
 
 
 
-'''python
+```python
 
 def pascalstriangle(n):
     flag = 1
@@ -218,7 +216,7 @@ def pascalstriangle(n):
         arr.append(temp)
     return arr
 
-'''
+```
 
 ---
 
@@ -227,14 +225,14 @@ def pascalstriangle(n):
 
 
 
-'''C++
+```C++
 
 .
 
 Time Complexity: O()
 Space Complexity: O()
 
-'''
+```
 
 ---
 
