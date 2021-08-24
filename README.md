@@ -1,37 +1,3 @@
-<!-- 
-
----
-
-### 
-
-.
-
-**Input:**
-<br>
-
-<br>
-
-**Output:**
-<br>
-
-<br>
-
-**Explanation:** 
-
-Step 1: 
-Step 2:
-Step 3: 
-
-```
-
-
-```
-
----
-
-
- -->
-
 # 300 Questions-Code
 ---
 
@@ -296,25 +262,30 @@ vector<int> nextPermutation(int N, vector<int> arr){
 
 ### [Inversion of Array](https://www.geeksforgeeks.org/counting-inversions/)
 
-.
+Given an array of integers. Find the Inversion Count in the array.  
+
+**Inversion Count**: For an array, inversion count indicates how far (or close) the array is from being sorted. If array is already sorted then the inversion count is 0. If an array is sorted in the reverse order then the inversion count is the maximum. 
+Formally, two elements a[i] and a[j] form an inversion if a[i] > a[j] and i < j.
 
 **Input:**
 <br>
-
+N = 5  
+arr[] = {2, 4, 1, 3, 5}
 <br>
 
 **Output:**
 <br>
-
+3
 <br>
 
-**Explanation:** 
+**Explanation:** The sequence 2, 4, 1, 3, 5 
+has three inversions (2, 1), (4, 1), (4, 3).
 
 Step 1: 
 Step 2:
 Step 3: 
 
-```
+```python
 
 
 ```
@@ -323,52 +294,96 @@ Step 3:
 
 ### [Stock Buy and Sell](https://practice.geeksforgeeks.org/problems/stock-buy-and-sell/0)
 
-.
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
 **Input:**
 <br>
-
+prices = [7,1,5,3,6,4]
 <br>
 
 **Output:**
 <br>
-
+5
 <br>
 
-**Explanation:** 
+**Explanation:** Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.  
 
-Step 1: 
-Step 2:
-Step 3: 
+The theory is try to **sell out at max price** and keep **storing minimum** and check the difference between the **maximum and minimum**. 
 
-```
+**arr** = [3, 1, 4, 8, 7, 2, 5]  
+  
+min = [3 or **8**, 1 or **8**, 4 or **8**, **8** or 7, **7** or 5, 2 or **5**, **5**]
+  
+**max** = [8, 8, 8, 8, 7, 5, 5]
 
+Step 1: Make minimum = arr[0] to store **current minimum value of stock**  
+Step 2: Put the **arr[i] - minimum** into a **profit variable**  
+Step 3: Then calculate **maximum of minimum element and profit** to find the **maximum profit in a certain window**
+
+```C++
+
+    int maxProfit(vector<int>& arr) {
+        int minimum = arr[0];
+        int maximum = 0;
+        int n = arr.size();
+        for(int i=0; i<n; i++) {
+            minimum = min(minimum, arr[i]);
+            int profit = arr[i] - minimum;
+            maximum = max(maximum, profit);
+            
+        }
+        
+        return maximum;
+    }
 
 ```
 
 ---
 ### [Rotate Matrix](https://www.geeksforgeeks.org/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/)
 
-.
+You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. **DO NOT** allocate another 2D matrix and do the rotation.
 
 **Input:**
 <br>
-
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
 <br>
 
 **Output:**
 <br>
-
+[[7,4,1],[8,5,2],[9,6,3]]
 <br>
 
 **Explanation:** 
 
-Step 1: 
-Step 2:
-Step 3: 
+Step 1: Make transpose of the matrix by **swapping arr[i][j] with arr[j][i]**  
+Step 2: Then horizontally shift the matrix  
+i. Run for loop from of **i from 0 to n**  
+ii. Run for loop from of **j from 0 to n/2**  
+Step 3: Then **swap arr[i][n - 1 -j] with arr[i][j]**  
 
-```
+```C++
 
+    void rotate(vector<vector<int>>& arr) {
+        int n = arr.size();
+        for(int i=0; i<n; i++) {
+            for(int j=i; j<n; j++) {
+                swap(arr[i][j], arr[j][i]);
+            }
+        }
+
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n/2; j++) {
+                swap(arr[i][n - 1 -j], arr[i][j]);
+            }
+        }
+    }
 
 ```
 
