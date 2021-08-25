@@ -17,19 +17,19 @@ arr[] = {1,2,3,-2,5}
 
 int maxSubarraySum(int arr[], int n) {
 
-        int current = 0;                      //This stores value of current elements
-        int maximum = INT_MIN;                //The maximum value of a sub array is kept here
-        for(int i=0; i<n; i++) {
-            current = current + arr[i];       //Add arr[i] in current to store sum of next element
-            if(current>maximum) {             //If current > maximum, store current in maximum
-                maximum = current;             
-            }
-            if(current < 0) {                 //Edge Case
-                current = 0;
-            }
+    int current = 0;                      //This stores value of current elements
+    int maximum = INT_MIN;                //The maximum value of a sub array is kept here
+    for(int i=0; i<n; i++) {
+        current = current + arr[i];       //Add arr[i] in current to store sum of next element
+        if(current>maximum) {             //If current > maximum, store current in maximum
+            maximum = current;             
         }
-        return maximum;
+        if(current < 0) {                 //Edge Case
+            current = 0;
+        }
     }
+    return maximum;
+}
 
 ```
 
@@ -233,28 +233,28 @@ Step 5: Reverse the array after a[i]
 ```C++
 
 vector<int> nextPermutation(int N, vector<int> arr){
-        int i=0;
-        int j = 0;
-        N = arr.size();
-        for(i=N-2; i>=0; i--) {
-            if(arr[i] < arr[i+1]) {
+    int i=0;
+    int j = 0;
+    N = arr.size();
+    for(i=N-2; i>=0; i--) {
+        if(arr[i] < arr[i+1]) {
+            break;
+        }
+    }
+    
+    if(i<0) {
+        reverse(arr.begin(), arr.end());
+    } else {
+        for(j = N-1; j>i; j--) {
+            if(arr[j] > arr[i]) {
                 break;
             }
         }
-        
-        if(i<0) {
-            reverse(arr.begin(), arr.end());
-        } else {
-            for(j = N-1; j>i; j--) {
-                if(arr[j] > arr[i]) {
-                    break;
-                }
-            }
-            swap(arr[i], arr[j]);
-            reverse(arr.begin() + i + 1, arr.end());
-        }
-        return arr;
+        swap(arr[i], arr[j]);
+        reverse(arr.begin() + i + 1, arr.end());
     }
+    return arr;
+}
 
 ```
 
@@ -281,12 +281,58 @@ arr[] = {2, 4, 1, 3, 5}
 **Explanation:** The sequence 2, 4, 1, 3, 5 
 has three inversions (2, 1), (4, 1), (4, 3).
 
-Step 1: 
-Step 2:
-Step 3: 
 
 ```python
 
+def mergeSort(arr, n):
+    temp = [0]*n
+    return _mergeSort(arr, temp, 0, n-1)
+
+def _mergeSort(arr, temp, left, right):
+    mid = 0
+    count = 0
+
+    if(right>left):
+        mid = (right+left)//2
+    
+        count += _mergeSort(arr, temp, left, mid)
+        count += _mergeSort(arr, temp, mid+1, right)
+
+        count += merge(arr, temp, left, mid+1, right)
+    return count
+
+def merge(arr, temp, left, mid, right):
+    i = left #Index for left subarray
+    j = mid+1  #Index for right subarray
+    k = left #Index for resultant merging array
+    count = 0
+
+    while((i<=mid) and (j<=right)):
+        if arr[i]<=arr[j]:
+            temp[k] = arr[i]
+            k += 1
+            i += 1
+        else:
+            temp[k] = arr[j]
+            k += 1
+            j += 1
+            count = count + (mid-i)
+    
+    while (i<=mid-1):
+        temp[k] = arr[i]
+        k += 1
+        i += 1
+    while (j<=right):
+        temp[k] = arr[j]
+        k += 1
+        j += 1
+    for i in range(left, right+1):
+        arr[i] = temp[i]
+    return count
+
+arr = [1, 2, 3]
+n = len(arr)
+print(mergeSort(arr, n))
 
 ```
 
@@ -327,19 +373,19 @@ Step 3: Then calculate **maximum of minimum element and profit** to find the **m
 
 ```C++
 
-    int maxProfit(vector<int>& arr) {
-        int minimum = arr[0];
-        int maximum = 0;
-        int n = arr.size();
-        for(int i=0; i<n; i++) {
-            minimum = min(minimum, arr[i]);
-            int profit = arr[i] - minimum;
-            maximum = max(maximum, profit);
-            
-        }
+int maxProfit(vector<int>& arr) {
+    int minimum = arr[0];
+    int maximum = 0;
+    int n = arr.size();
+    for(int i=0; i<n; i++) {
+        minimum = min(minimum, arr[i]);
+        int profit = arr[i] - minimum;
+        maximum = max(maximum, profit);
         
-        return maximum;
     }
+    
+    return maximum;
+}
 
 ```
 
@@ -370,20 +416,20 @@ Step 3: Then **swap arr[i][n - 1 -j] with arr[i][j]**
 
 ```C++
 
-    void rotate(vector<vector<int>>& arr) {
-        int n = arr.size();
-        for(int i=0; i<n; i++) {
-            for(int j=i; j<n; j++) {
-                swap(arr[i][j], arr[j][i]);
-            }
-        }
-
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n/2; j++) {
-                swap(arr[i][n - 1 -j], arr[i][j]);
-            }
+void rotate(vector<vector<int>>& arr) {
+    int n = arr.size();
+    for(int i=0; i<n; i++) {
+        for(int j=i; j<n; j++) {
+            swap(arr[i][j], arr[j][i]);
         }
     }
+
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n/2; j++) {
+            swap(arr[i][n - 1 -j], arr[i][j]);
+        }
+    }
+}
 
 ```
 
@@ -392,27 +438,62 @@ Step 3: Then **swap arr[i][n - 1 -j] with arr[i][j]**
 
 ### [Pow(x, n)](https://leetcode.com/problems/powx-n/)
 
-
-.
+Implement pow(x, n), which calculates x raised to the power n (i.e., x<sup>n</sup>).  
 
 **Input:**
 <br>
-
+x = 2.00000  
+n = 10
 <br>
 
 **Output:**
 <br>
-
+1024.00000
 <br>
 
 **Explanation:** 
 
-Step 1: 
-Step 2:
-Step 3: 
+If power is even  
+2<sup>10</sup> = (2 x 2)<sup>5</sup> = (4)<sup>5</sup>  
+(4)<sup>5</sup> - now the power has become positive so,  
+x becomes x = x*(x)<sup>n-1</sup>  
+<br>
 
-```
+if **n** is **even**:  
+x = x*x
+n = n/2  
+<br>
 
+if **n** is **odd**:  
+ans = ans*x;
+n = n-1  
+
+```C++
+
+double myPow(double x, int m) {
+    long long n = m;
+    double ans = 1.0;
+
+    if(n<0) {
+        n = (-1)*n;
+    }
+
+    while(n) {
+        if(n%2 == 0) {
+            x = x*x;
+            n = n/2;
+        } else {
+            ans = ans*x;
+            n = n-1;
+        }
+    }
+
+    if(m<0) {
+        ans = 1/ans;
+    }
+
+    return ans;
+}
 
 ```
 
@@ -420,26 +501,44 @@ Step 3:
 
 ### [Majority Element(>n/2 times)](https://www.geeksforgeeks.org/majority-element/)
 
-.
+The majority element is the element that appears more than **⌊n / 2⌋** times. You may assume that the majority element always exists in the array.
 
 **Input:**
 <br>
-
+nums = [2,2,1,1,1,2,2]
 <br>
 
 **Output:**
 <br>
-
+2
 <br>
 
 **Explanation:** 
 
-Step 1: 
-Step 2:
-Step 3: 
+Step 1: This is **Moore Voting Algorithm**  
+Step 2: There are multiple blocks of elements where count becomes 0  
+<br>
+Prefix &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Suffix  
+________ | ________ | ________ | ________ | ________ 
+<br>
+Step 3: If the element doesn't becomes majority in prefix, then it is bound to become majority in the last block i.e. Suffix.
 
-```
+```python
 
+def majorityElement(arr):
+    ele = 0
+    count = 0
+
+    for i in range(len(arr)):
+        if count==0:
+            ele = arr[i]
+
+        if arr[i] == ele:
+            count += 1
+        else:
+            count -= 1
+    
+    return ele
 
 ```
 
@@ -447,26 +546,63 @@ Step 3:
 
 ### [Majority Element(>n/3 times)](https://www.geeksforgeeks.org/n3-repeated-number-array-o1-space/)
 
-.
+Given an integer array of size n, find all elements that appear more than **⌊ n/3 ⌋** times.
 
 **Input:**
 <br>
-
+arr = [1 , 1, 1, 3, 3 , 2, 2, 2]
 <br>
 
 **Output:**
 <br>
-
+[1, 2]
 <br>
 
 **Explanation:** 
 
-Step 1: 
-Step 2:
-Step 3: 
+Step 1: This is **Boyre Moore Voting Algorithm**  
+Step 2: As **n/3 only gives 2** as maximum remainder so there must be **at max 2 majority elements** in an array that have counts greater tha **n/3.**  
+Step 3: Instead of ele now there will be num1, num2, c1, c2 to store two elements.
 
-```
+```python
 
+def majorityElement(arr):
+    num1 = -1
+    num2 = -1
+    c1 = 0
+    c2 = 0
+
+    for i in range(len(arr)):
+        if arr[i] == num1:
+            c1 += 1
+        elif arr[i] == num2:
+            c2 += 1
+        elif c1 == 0:
+            num1 = arr[i]
+            c1 = 1
+        elif c2 == 0:
+            num2 = arr[i]
+            c2 = 1
+        else:
+            c1 -= 1
+            c2 -= 1
+
+    temp = []
+    c1 = 0
+    c2 = 0
+    for i in range(len(arr)):
+        if arr[i] == num1:
+            c1 += 1
+        if arr[i] == num2:
+            c2 += 1
+        
+    if c1 > len(arr)//3:
+        temp.append(num1)
+    if (c2 > len(arr)//3) and (num1 != num2):
+        temp.append(num1)
+        
+    
+    return temp
 
 ```
 
